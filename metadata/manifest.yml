@@ -1,0 +1,48 @@
+Name: doradus
+Cartridge-Short-Name: DORADUS
+Architecture: noarch
+Display-Name: Doradus Database 2.2
+Description: "Doradus REST service that extends a Doradus NoSQL database with a graph-based data model, advanced indexing and search features, and a REST API."
+Version: '2.2'
+Versions: [2.2]
+Cartridge-Version: 0.0.1
+Cartridge-Vendor: rc
+License: GPL
+Vendor: Oracle
+Categories:
+  - service
+  - database
+  - embedded
+Website: http://doradus.apache.org
+Source-Url: https://github.com/tduong1/openshift-origin-cartridge-doradus.git
+Help-Topics:
+  - "Building with Doradus" : http://docs.redhat.com/docs/en-US/OpenShift/2.0/html/User_Guide/sect-User_Guide-Working_With_Database_Cartridges.html
+Cart-Data:
+  - Key: "username"
+    Type: cart_data
+    Description: "Root user on doradus database"
+  - Key: "password"
+    Type: cart_data
+    Description: "Password for root user on doradus database"
+  - Key: database_name
+    Type: cart_data
+    Description: "Doradus DB name"
+  - Key: connection_url
+    Type: cart_data
+    Description: "Doradus DB connection URL"
+Provides:
+  - doradus-2.2
+  - doradus 
+  - doradus-singleton-master
+Publishes:
+  publish-db-connection-info:
+    Type: "ENV:NET_TCP:db:connection-info"
+Scaling:
+  Min: 1
+  Max: 1
+Endpoints:
+  - Private-IP-Name:   DB_HOST
+    Private-Port-Name: DB_PORT
+    Private-Port:      19999
+    Public-Port-Name:  DB_PROXY_PORT
+Install-Build-Required: false

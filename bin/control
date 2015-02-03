@@ -1,0 +1,93 @@
+#!/bin/bash
+
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
+export STOPTIMEOUT=10
+
+function is_running {
+  pidfile=$OPENSHIFT_DORADUS_DIR/doradus/pid/doradus.pid
+
+  if [ -f $pidfile ]; then
+    cass_pid=`cat $pidfile 2> /dev/null`
+
+    if `ps --pid $cass_pid > /dev/null 2>&1` 
+    then
+      return 0
+    fi
+  fi
+
+  return 1
+}
+# TODO: account for standalone scenario
+# TODO: source user hooks?
+# Start and block until it comes up.
+function start {
+  if ! is_running; then
+    $OPENSHIFT_DORADUS_DIR/versions/2.2/doradus -p $OPENSHIFT_DORADUS_DIR/doradus/pid/doradus.pid
+  else
+    echo "Doradus already running" 1>&2
+  fi
+}
+
+function wait_for_doradus_availability {
+  pidfile=$OPENSHIFT_DORADUS_DIR/pid/doradus.pid
+
+  if [ -n "$OPENSHIFT_DORADUS_DB_USERNAME" ]; then
+    i=0
+    sleep 1
+    while (( ! touch_doradus ) || [ ! -f $pidfile ]) && [ $i -lt 30 ]
+    do
+      sleep 1
+      i=$(($i + 1))
+    done
+  fi
+}
+
+function stop {
+  if is_running; then
+    pidfile=$OPENSHIFT_DORADUS_DIR/doradus/pid/doradus.pid
+
+    if [ -f $pidfile ]; then
+      pid=$( /bin/cat $pidfile )
+      /bin/kill $pid
+      ret=$?
+      if [ $ret -eq 0 ]; then
+        TIMEOUT="$STOPTIMEOUT"
+        while [ $TIMEOUT -gt 0 ] && [ -f "$pidfile" ]
+        do
+          /bin/kill -0 "$pid" >/dev/null 2>&1 || break
+          sleep 1
+          let TIMEOUT=${TIMEOUT}-1
+        done
+      fi
+    else
+      echo "Doradus already stopped" 1>&2
+    fi
+  fi
+}
+
+function status {
+  if is_running; then
+    client_result "Doradus is running" 
+  else
+    client_result "Doradus is stopped" 
+  fi
+
+  exit 0
+}
+
+case "$1" in
+  start)
+    start
+  ;;
+  stop)
+    stop
+  ;;
+  status)
+    status
+  ;;
+  restart)
+    stop
+    start
+  ;;
+esac

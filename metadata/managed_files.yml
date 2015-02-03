@@ -1,0 +1,15 @@
+---
+snapshot_exclusions:
+- doradus/*
+locked_files:
+- bin/
+- bin/*
+- env/OPENSHIFT_DORADUS_USERNAME
+- env/OPENSHIFT_DORADUS_PASSWORD
+- env/OPENSHIFT_DORADUS_URL
+- metadata/
+- metadata/*
+- hooks/
+- hooks/*
+processed_templates:
+- '**/*.erb'
