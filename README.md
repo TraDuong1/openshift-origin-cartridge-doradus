@@ -1,6 +1,6 @@
-# OpenShift Cassandra Cartridge
+# OpenShift Doradus Cartridge
 
-The `cassandra` cartridge provides [Doradus](https://github.com/dell-oss/Doradus) on OpenShift.
+The `doradus` cartridge provides [Doradus](https://github.com/dell-oss/Doradus) on OpenShift.
 
 The downloadable URL is : https://raw.githubusercontent.com/TraDuong1/openshift-origin-cartridge-doradus/master/metadata/manifest.yml
 
