@@ -145,7 +145,7 @@ dbhost: localhost
 # use_cql: If this is false, the Thrift API is used for communicating with Cassandra. If true the
 # CQL API is used. Note that Thrift and CQL use different port numbers (see dbport below).
 # Default: true
-use_cql: false
+use_cql: true
 
 # dbport: The port number to use for Cassandra database connections. It must be the same on all
 # nodes listed in "dbhost". For Thrift, the default port normally 9160; for CQL, it is 9042.
