@@ -43,6 +43,6 @@ Scaling:
 Endpoints:
   - Private-IP-Name:   DB_HOST
     Private-Port-Name: DB_PORT
-    Private-Port:      19043
+    Private-Port:      29043
     Public-Port-Name:  DB_PROXY_PORT
 Install-Build-Required: false
