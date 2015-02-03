@@ -15,4 +15,5 @@ CASSANDRA_SUPERUSER_PW=Alpha1
 
 cd $OPENSHIFT_DORADUS_DIR/versions/2.2
 
-exec java -cp $CLASSPATH com.dell.doradus.core.DoradusServer -dbhost $CASSANDRA_IP -dbport $CASSANDRA_PORT -dbuser $CASSANDRA_SUPERUSER_NAME –dbpassword $CASSANDRA_SUPERUSER_PW
+#exec java -cp $CLASSPATH com.dell.doradus.core.DoradusServer -dbhost $CASSANDRA_IP -dbport $CASSANDRA_PORT -dbuser $CASSANDRA_SUPERUSER_NAME –dbpassword $CASSANDRA_SUPERUSER_PW
+exec java -cp $CLASSPATH com.dell.doradus.core.DoradusServer -dbhost $CASSANDRA_IP -dbport $CASSANDRA_PORT
