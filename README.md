@@ -4,14 +4,21 @@ The `doradus` cartridge provides [Doradus](https://github.com/dell-oss/Doradus) 
 
 The downloadable URL is : https://raw.githubusercontent.com/TraDuong1/openshift-origin-cartridge-doradus/master/metadata/manifest.yml
 
-Do not forget to set Cartridge environment variables for Doradus which contain all the connection info of the Cassandra cluster/node.
+It is required to tell Doradus where the Cassandra cluster/node can be reached by set Cartridge environment variables below.
 
     rhc env set CASSANDRA_NODE_IP=<CASSANDRA_NODE_IP> CASSANDRA_NODE_PORT=<CASSANDRA_NODE_PORT> CASSANDRA_SUPERUSER_NAME=<CASSANDRA_SUPERUSER_NAME> CASSANDRA_SUPERUSER_PW=<CASSANDRA_SUPERUSER_PW>
 
-Then simply use with 'rhc' client tools to add cartridge
+Then simply use with 'rhc' client tools to deploy this cartridge by providing the URL of the cartridge manifest. OpenShift will then download and install the cartridge for you.
 
     rhc cartridge add https://raw.githubusercontent.com/TraDuong1/openshift-origin-cartridge-doradus/master/metadata/manifest.yml —app <app_name>
 
+Other useful cartridge management commands
+
+    rhc cartridge status <cartridge_name>
+
+    rhc cartridge start <cartridge_name>
+
+    rhc cartridge stop  <cartridge_name>
 
 ## Environment Variables
 
