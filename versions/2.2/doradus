@@ -4,14 +4,13 @@
 # Wrapper script to start the doradus server
 # ------------------------------------------
 #
-# Change DORADUSSERVER_HOME to configuration script if needed
 
-
-CLASSPATH=config/:target/classes:target/dependency/*
+# Change CASSANDRA_IP to the ip of the running Cassandra node for Doradus
 CASSANDRA_IP=127.9.156.1
 CASSANDRA_PORT=19042
 CASSANDRA_SUPERUSER_NAME=SuperDory
 CASSANDRA_SUPERUSER_PW=Alpha1
+CLASSPATH=config/:target/classes:target/dependency/*
 
 cd $OPENSHIFT_DORADUS_DIR/versions/2.2
 
