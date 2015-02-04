@@ -14,4 +14,4 @@ CLASSPATH=config/:target/classes:target/dependency/*
 
 cd $OPENSHIFT_DORADUS_DIR/versions/2.2
 
-nohup java -cp $CLASSPATH com.dell.doradus.core.DoradusServer -dbhost $CASSANDRA_IP -dbport $CASSANDRA_PORT -restport 29042 > $OPENSHIFT_DORADUS_DIR/doradus/log/doradus.log 2> $OPENSHIFT_DORADUS_DIR/doradus/errors.log < /dev/null & echo $! > $OPENSHIFT_DORADUS_DIR/doradus/pid/doradus.pid
+nohup java -cp $CLASSPATH com.dell.doradus.core.DoradusServer -dbhost $CASSANDRA_IP -dbport $CASSANDRA_PORT -restport 29042 -dbuser $CASSANDRA_SUPERUSER_NAME –dbpassword $CASSANDRA_SUPERUSER_PW > $OPENSHIFT_DORADUS_DIR/doradus/log/doradus.log 2> $OPENSHIFT_DORADUS_DIR/doradus/errors.log < /dev/null & echo $! > $OPENSHIFT_DORADUS_DIR/doradus/pid/doradus.pid
