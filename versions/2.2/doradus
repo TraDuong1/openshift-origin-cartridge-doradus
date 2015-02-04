@@ -6,15 +6,12 @@
 #
 
 # Change CASSANDRA_IP to the ip of the running Cassandra node for Doradus
-echo -n "CASSANDRA_NODE_IP: $CASSANDRA_NODE_IP" 
 CASSANDRA_IP=$CASSANDRA_NODE_IP
-echo -n "CASSANDRA_IP: $CASSANDRA_IP" 
-CASSANDRA_PORT=19042
-CASSANDRA_SUPERUSER_NAME=SuperDory
-CASSANDRA_SUPERUSER_PW=Alpha1
+CASSANDRA_PORT=$CASSANDRA_NODE_PORT
+CASSANDRA_SUPERUSER_NAME=$CASSANDRA_SUPERUSER_NAME
+CASSANDRA_SUPERUSER_PW=$CASSANDRA_SUPERUSER_PW
 CLASSPATH=config/:target/classes:target/dependency/*
 
 cd $OPENSHIFT_DORADUS_DIR/versions/2.2
 
-#exec java -cp $CLASSPATH com.dell.doradus.core.DoradusServer -dbhost $CASSANDRA_IP -dbport $CASSANDRA_PORT -dbuser $CASSANDRA_SUPERUSER_NAME –dbpassword $CASSANDRA_SUPERUSER_PW
-nohup java -cp $CLASSPATH com.dell.doradus.core.DoradusServer -dbhost $CASSANDRA_IP -dbport $CASSANDRA_PORT -restport 29042 > $OPENSHIFT_DORADUS_DIR/doradus/log/doradus.log 2> $OPENSHIFT_DORADUS_DIR/doradus/errors.log < /dev/null & echo $! > $OPENSHIFT_DORADUS_DIR/doradus/pid/doradus.pid
+nohup java -cp $CLASSPATH com.dell.doradus.core.DoradusServer -dbhost $CASSANDRA_IP -dbport $CASSANDRA_PORT -restport $OPENSHIFT_DORADUS_DB_PORT > $OPENSHIFT_DORADUS_DIR/doradus/log/doradus.log 2> $OPENSHIFT_DORADUS_DIR/doradus/errors.log < /dev/null & echo $! > $OPENSHIFT_DORADUS_DIR/doradus/pid/doradus.pid
