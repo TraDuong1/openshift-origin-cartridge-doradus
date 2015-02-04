@@ -22,7 +22,6 @@ function is_running {
 # TODO: source user hooks?
 # Start and block until it comes up.
 function start {
-  client_result $CASSANDRA_NODE_IP
   if ! is_running; then        
     $OPENSHIFT_DORADUS_DIR/versions/2.2/doradus
   else
