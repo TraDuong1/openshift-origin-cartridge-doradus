@@ -114,7 +114,7 @@ keyspace: 'Doradus'
 ks_defaults:
     - strategy_class: SimpleStrategy
     - strategy_options:
-        - replication_factor: "1"   # enclose this value in quotes
+        - replication_factor: "2"   # enclose this value in quotes
     - durable_writes: true
     
 ########## Cassandra ColumnFamily Parameters
