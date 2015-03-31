@@ -6,7 +6,7 @@ Description: "Doradus REST service that extends a Doradus NoSQL database with a 
 Version: '2.2'
 Versions: [2.2]
 Cartridge-Version: 0.0.1
-Cartridge-Vendor: rc
+Cartridge-Vendor: dell
 License: Apache 2
 Vendor: Dell
 Categories:
